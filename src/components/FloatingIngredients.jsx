@@ -12,7 +12,7 @@ const FloatingIngredients = ({ count = 40 }) => {
   // Create randomized positions, rotations, colors and movement parameters
   const items = useMemo(() => {
     const temp = [];
-    const colors = ['#f2590d', '#4daa57', '#ffffff']; // Orange, Green, White
+    const colors = ['var(--primary)', '#4daa57', '#ffffff']; // Orange, Green, White
     for (let i = 0; i < count; i++) {
       const x = (Math.random() - 0.5) * 25;
       const y = (Math.random() - 0.5) * 15;

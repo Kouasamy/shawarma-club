@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useReveal } from '../hooks/useAnimations';
-import { Minus, Plus, X, ShoppingBag, Check } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const CATEGORIES = ["Tous", "Shawarmas", "Formules", "Boissons"];
 
@@ -26,12 +27,22 @@ const Menu = () => {
   const [activeTab, setActiveTab] = useState("Tous");
   const headerRef = useReveal();
 
+  const handleDirectOrder = (product) => {
+    const msg = `Bonjour Le Shawarma Club ! 🌯\n\nJe souhaite commander depuis le site :\n👉 *1x ${product.name}*\n\n💰 *Prix : ${product.price} F CFA*\n\nMerci de confirmer ma commande ! ✨`;
+    window.open(`https://wa.me/message/UFUEWJAI4FTED1?text=${encodeURIComponent(msg)}`, '_blank');
+  };
+
   const filteredItems = activeTab === "Tous" 
     ? allItems 
     : allItems.filter(item => item.category === activeTab);
 
   return (
     <div className="menu-page">
+      <SEO 
+        title="Notre Carte" 
+        description="Découvrez nos shawarmas poulet, boeuf et mix, nos formules combos et nos boissons fraîches. Le meilleur goût d'Abidjan à partir de 1 000 F CFA."
+        url="/menu"
+      />
       <section style={styles.headerSection}>
         <div className="container" ref={headerRef} style={{textAlign: 'center'}}>
           <h1 style={styles.pageTitle}>La Carte du Club</h1>
@@ -58,7 +69,7 @@ const Menu = () => {
 
           <div className="responsive-grid" style={styles.menuGrid}>
             {filteredItems.map((item, i) => (
-              <MenuCard key={item.id} item={item} index={i} />
+              <MenuCard key={item.id} item={item} index={i} onOrder={() => handleDirectOrder(item)} />
             ))}
           </div>
         </div>
@@ -84,22 +95,20 @@ const Menu = () => {
              <span style={styles.oldPriceTag}>6 000 F</span>
              <span style={styles.newPriceTag}>5 000 F CFA</span>
           </div>
-          <a
-            href="https://wa.me/message/UFUEWJAI4FTED1"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button 
+            onClick={() => handleDirectOrder(formules[0])}
             className="btn btn-primary glow-btn" 
-            style={{padding: '16px 40px', fontSize: '1.2rem', display: 'inline-block', textDecoration: 'none'}}
+            style={{padding: '16px 40px', fontSize: '1.2rem'}}
           >
             Commander le Pack
-          </a>
+          </button>
         </div>
       </section>
     </div>
   );
 };
 
-const MenuCard = ({ item, index }) => {
+const MenuCard = ({ item, index, onOrder }) => {
   const revealRef = useReveal();
   return (
     <div ref={revealRef} className={`card reveal stagger-${(index % 3) + 1}`} style={styles.menuCard}>
@@ -113,19 +122,19 @@ const MenuCard = ({ item, index }) => {
       <div style={styles.menuCardBody}>
         <h3 style={styles.menuCardTitle}>{item.name}</h3>
         <p style={styles.menuCardDesc}>{item.desc}</p>
-        <a 
-          href="https://wa.me/message/UFUEWJAI4FTED1"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button 
+          onClick={onOrder}
           className="btn btn-primary" 
-          style={{...styles.menuCardBtn, display: 'inline-block', textAlign: 'center', textDecoration: 'none'}}
+          style={styles.menuCardBtn}
         >
           Commander
-        </a>
+        </button>
       </div>
     </div>
   );
 };
+
+
 
 const styles = {
   headerSection: { padding: '80px 0 40px', backgroundColor: '#fafafa' },

@@ -1,9 +1,14 @@
-import React from 'react';
 import { useReveal, useCounter } from '../hooks/useAnimations';
+import SEO from '../components/SEO';
 
 const Story = () => {
   return (
     <div className="story-page">
+      <SEO 
+        title="Notre Histoire" 
+        description="Découvrez l'aventure du Shawarma Club à Abidjan. De la passion pour les saveurs authentiques à la villa Villa 4 de Cocody, découvrez nos valeurs et notre engagement qualité."
+        url="/histoire"
+      />
       
       {/* Hero */}
       <section style={styles.heroSection}>
@@ -70,10 +75,10 @@ const ValuesSection = () => {
   ];
 
   return (
-    <section style={{backgroundColor: '#fafafa', padding: '100px 0', color: 'var(--text-dark)'}}>
+    <section style={{backgroundColor: '#fafafa', padding: '100px 0'}}>
       <div className="container" style={{textAlign: 'center'}}>
         <div ref={headerRef} className="reveal">
-          <h2 style={{fontSize: '2.5rem', marginBottom: '64px', color: '#121212'}}>Nos Valeurs</h2>
+          <h2 style={{fontSize: '2.5rem', marginBottom: '64px'}}>Nos Valeurs</h2>
         </div>
         <div className="responsive-grid" style={styles.valuesGrid}>
           {values.map((v, i) => <ValueCard key={i} {...v} index={i} />)}
@@ -138,36 +143,16 @@ const DecimalCounterStat = ({ label }) => {
 
 const styles = {
   heroSection: { height: '500px', backgroundImage: 'url(/images/shawarma-delivery-2.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' },
-  heroOverlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(230,57,70,0.4) 100%)' },
+  heroOverlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(242,89,13,0.4) 100%)' },
   heroContent: { position: 'relative', zIndex: 10, textAlign: 'center' },
   originContainer: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' },
   originText: { paddingRight: '32px' },
-  year: { display: 'inline-block', fontSize: '1.4rem', fontWeight: '800', color: 'var(--primary)', backgroundColor: 'var(--primary-light)', padding: '8px 20px', borderRadius: '8px', marginBottom: '24px' },
+  year: { display: 'inline-block', fontSize: '1.4rem', fontWeight: '800', color: 'var(--text-dark)', backgroundColor: 'var(--primary-light)', padding: '8px 20px', borderRadius: '8px', marginBottom: '24px' },
   originImageWrap: { borderRadius: '24px', overflow: 'hidden', height: '500px', boxShadow: '0 20px 40px -10px rgba(0,0,0,0.15)' },
   originImage: { width: '100%', height: '100%', objectFit: 'cover' },
   valuesGrid: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' },
-  valueCard: {
-    display: 'flex',
-    flexDirection: 'column', 
-    alignItems: 'center', 
-    backgroundColor: '#ffffff',
-    padding: '40px', 
-    borderRadius: '24px',
-    boxShadow: '0 4px 6px rgba(0,0,0,0.03)',
-    border: '1px solid #eaedf2'
-  },
-  valueNumber: {
-    width: '64px', 
-    height: '64px', 
-    backgroundColor: 'var(--primary-light)', 
-    color: 'var(--primary)', 
-    borderRadius: '50%', 
-    display: 'flex', 
-    alignItems: 'center', 
-    justifyContent: 'center', 
-    fontSize: '1.8rem', 
-    fontWeight: '800', 
-    marginBottom: '24px', },
+  valueCard: { backgroundColor: 'white', padding: '48px 32px', borderRadius: '16px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.04)', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)' },
+  valueNumber: { width: '64px', height: '64px', backgroundColor: 'var(--primary-light)', color: 'var(--primary)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem', fontWeight: '800', marginBottom: '24px' },
   statsGrid: { display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px' },
   statNumber: { fontSize: '3.5rem', fontWeight: '800', marginBottom: '8px' },
   statLabel: { fontSize: '1.1rem', fontWeight: '600', opacity: 0.9 },

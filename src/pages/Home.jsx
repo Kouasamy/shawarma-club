@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom';
 import { BadgeCent, UtensilsCrossed, ShieldCheck, Truck, ArrowRight, Star, Quote, Minus, Plus, X, ShoppingBag, Check } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useReveal, useCounter } from '../hooks/useAnimations';
+import SEO from '../components/SEO';
 
 const Home = () => {
+  const handleDirectOrder = (product) => {
+    const msg = `Bonjour Le Shawarma Club ! 🌯\n\nJe souhaite commander depuis le site :\n👉 *1x ${product.name}*\n\n💰 *Prix : ${product.price} F CFA*\n\nMerci de confirmer ma commande ! ✨`;
+    window.open(`https://wa.me/message/UFUEWJAI4FTED1?text=${encodeURIComponent(msg)}`, '_blank');
+  };
 
   useEffect(() => {
     // Start explosion after 800ms
@@ -13,7 +18,7 @@ const Home = () => {
         particleCount: 150,
         spread: 70,
         origin: { x: 0.75, y: 0.5 }, // Right side where the visual is
-        colors: ['#f2590d', '#ffffff', '#ffd700'],
+        colors: ['var(--primary)', '#ffffff', '#ffd700'],
         zIndex: 1000,
       });
     }, 800);
@@ -29,6 +34,11 @@ const Home = () => {
 
   return (
     <div className="home-page">
+      <SEO 
+        title="Le Meilleur Shawarma d'Abidjan" 
+        description="Savourez l'art du Shawarma authentique dès 1 000 F CFA. Pain libanais frais, viandes marinées et sauce secrète. Livraison rapide à domicile ou au bureau."
+        url="/"
+      />
       
       {/* ═══════════════ HERO ═══════════════ */}
       <section style={{...styles.heroSection, position: 'relative'}}>
@@ -38,7 +48,7 @@ const Home = () => {
               🌯 Le Meilleur Shawarma d'Abidjan
             </div>
             <h1 className="hero-title-mobile" style={styles.heroTitle}>
-              Savourez l'art du <span style={{color: '#f2590d', position: 'relative'}}>Shawarma</span> authentique dès <span style={{color: '#f2590d', whiteSpace: 'nowrap'}}>1 000 F</span>
+              Savourez l'art du <span style={{color: 'var(--primary)', position: 'relative'}}>Shawarma</span> authentique dès <span style={{color: 'var(--primary)', whiteSpace: 'nowrap'}}>1 000 F</span>
             </h1>
             <p style={{...styles.heroSubtitle, fontSize: '1.25rem', fontWeight: '500', color: '#444', maxWidth: '800px'}}>
               Au Shawarma Club, dégustez un shawarma généreux avec du pain libanais frais, des viandes marinées et notre sauce secrète. Livré directement à votre porte à Abidjan. 🌯✨
@@ -86,10 +96,10 @@ const Home = () => {
       <section style={styles.featureSection}>
         <div className="container responsive-grid" style={styles.featureContainer}>
           {[
-            { icon: <BadgeCent size={28} color="#f2590d" />, title: "Prix doux", desc: "Shawarma dès 1 000 FCFA" },
-            { icon: <UtensilsCrossed size={28} color="#f2590d" />, title: "Pain Libanais", desc: "Fait frais chaque jour" },
-            { icon: <ShieldCheck size={28} color="#f2590d" />, title: "100% Halal", desc: "Qualité & fraîcheur garanties" },
-            { icon: <Truck size={28} color="#f2590d" />, title: "Livraison rapide", desc: "Chez vous, au bureau, à l'école" },
+            { icon: <BadgeCent size={28} color="var(--primary)" />, title: "Prix doux", desc: "Shawarma dès 1 000 FCFA" },
+            { icon: <UtensilsCrossed size={28} color="var(--primary)" />, title: "Pain Libanais", desc: "Fait frais chaque jour" },
+            { icon: <ShieldCheck size={28} color="var(--primary)" />, title: "100% Halal", desc: "Qualité & fraîcheur garanties" },
+            { icon: <Truck size={28} color="var(--primary)" />, title: "Livraison rapide", desc: "Chez vous, au bureau, à l'école" },
           ].map((feat, i) => (
             <FeatureCard key={i} {...feat} index={i} />
           ))}
@@ -109,6 +119,7 @@ const Home = () => {
                 desc={p.desc}
                 price={p.price}
                 index={i}
+                onOrder={() => handleDirectOrder(p)}
               />
             ))}
           </div>
@@ -117,7 +128,7 @@ const Home = () => {
       </section>
 
       {/* ═══════════════ PACK COMBO ═══════════════ */}
-      <PackComboSection />
+      <PackComboSection onOrder={() => handleDirectOrder({ name: 'Pack Combo 🔥', price: '5000' })} />
 
       {/* ═══════════════ TESTIMONIALS ═══════════════ */}
       <TestimonialsSection />
@@ -145,13 +156,11 @@ const Home = () => {
       >
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp" style={{width: 32, height: 32}} />
       </a>
-
     </div>
   );
 };
 
 /* ─── Sub-components ─── */
-
 const FeatureCard = ({ icon, title, desc, index }) => {
   const ref = useReveal();
   return (
@@ -174,7 +183,7 @@ const SectionHeader = () => {
   );
 };
 
-const ProductCard = ({ image, title, desc, price, index }) => {
+const ProductCard = ({ image, title, desc, price, index, onOrder }) => {
   const revealRef = useReveal();
   return (
     <div ref={revealRef} className={`card reveal stagger-${index + 1}`} style={styles.menuCard}>
@@ -185,9 +194,9 @@ const ProductCard = ({ image, title, desc, price, index }) => {
       <div style={styles.menuCardBody}>
         <h3 style={styles.menuCardTitle}>{title}</h3>
         <p style={styles.menuCardDesc}>{desc}</p>
-        <a href="https://wa.me/message/UFUEWJAI4FTED1" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{...styles.menuCardBtn, display: 'inline-block', textAlign: 'center'}}>
+        <button onClick={onOrder} className="btn btn-primary" style={styles.menuCardBtn}>
           Commander
-        </a>
+        </button>
       </div>
     </div>
   );
@@ -205,7 +214,7 @@ const MenuCta = () => {
   );
 };
 
-const PackComboSection = () => {
+const PackComboSection = ({ onOrder }) => {
   const ref = useReveal();
   return (
     <section style={styles.comboSection}>
@@ -224,11 +233,11 @@ const PackComboSection = () => {
           </p>
           <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px', marginBottom: '40px'}}>
             <span style={{fontSize: '1.8rem', color: 'rgba(255,255,255,0.5)', textDecoration: 'line-through'}}>6 000 F</span>
-            <span style={{fontSize: '3.5rem', fontWeight: '800', color: '#ffffff', textShadow: '0 0 30px rgba(230,57,70,0.6)'}}>5 000 F CFA</span>
+            <span style={{fontSize: '3.5rem', fontWeight: '800', color: '#ffffff', textShadow: '0 0 30px rgba(242,89,13,0.6)'}}>5 000 F CFA</span>
           </div>
-          <a href="https://wa.me/message/UFUEWJAI4FTED1" target="_blank" rel="noopener noreferrer" className="btn glow-btn" style={{padding: '18px 48px', fontSize: '1.15rem', fontWeight: '700', backgroundColor: 'var(--primary)', color: 'white', boxShadow: '0 8px 32px rgba(230,57,70,0.5)', display: 'inline-block'}}>
+          <button onClick={onOrder} className="btn glow-btn" style={{padding: '18px 48px', fontSize: '1.15rem', fontWeight: '700', backgroundColor: 'var(--primary)', color: 'white', boxShadow: '0 8px 32px rgba(242,89,13,0.5)'}}>
             Commander le Pack
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -247,7 +256,7 @@ const TestimonialsSection = () => {
       <div className="container">
         <div ref={ref} className="reveal" style={{textAlign: 'center', marginBottom: '64px'}}>
           <span style={styles.sectionLabel}>Témoignages</span>
-          <h2 style={{...styles.sectionTitle, color: 'var(--text-dark)'}}>Ils ont goûté, ils ont validé ⭐️</h2>
+          <h2 style={styles.sectionTitle}>Ils ont goûté, ils ont validé ⭐️</h2>
         </div>
         <div className="responsive-grid" style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px'}}>
           {testimonials.map((t, i) => <TestimonialCard key={i} {...t} index={i} />)}
@@ -260,14 +269,14 @@ const TestimonialsSection = () => {
 const TestimonialCard = ({ name, role, text, index }) => {
   const ref = useReveal();
   return (
-    <div ref={ref} className={`card reveal stagger-${index + 1}`} style={{padding: '32px', height: '100%', display: 'flex', flexDirection: 'column', backgroundColor: 'white', border: '1px solid #eaedf2', boxShadow: '0 4px 12px rgba(0,0,0,0.03)'}}>
+    <div ref={ref} className={`card reveal stagger-${index + 1}`} style={{padding: '32px', height: '100%', display: 'flex', flexDirection: 'column'}}>
       <div style={{display: 'flex', gap: '4px', marginBottom: '16px'}}>
         {[...Array(5)].map((_, i) => <Star key={i} size={18} fill="var(--primary)" color="var(--primary)" />)}
       </div>
-      <Quote size={24} color="var(--primary)" style={{marginBottom: '16px', opacity: 0.15}} />
-      <p style={{color: '#666', fontSize: '1.05rem', lineHeight: 1.8, flexGrow: 1, fontStyle: 'italic'}}>"{text}"</p>
+      <Quote size={24} color="var(--primary)" style={{marginBottom: '16px', opacity: 0.3}} />
+      <p style={{color: '#444', fontSize: '1.05rem', lineHeight: 1.8, flexGrow: 1, fontStyle: 'italic'}}>"{text}"</p>
       <div style={{marginTop: '24px', borderTop: '1px solid #eaedf2', paddingTop: '16px'}}>
-        <p style={{fontWeight: '700', color: 'var(--text-dark)'}}>{name}</p>
+        <p style={{fontWeight: '700'}}>{name}</p>
         <p style={{color: 'var(--primary)', fontWeight: '600', fontSize: '0.875rem'}}>{role}</p>
       </div>
     </div>
@@ -310,7 +319,7 @@ const styles = {
   menuSection: { padding: '100px 0' },
   sectionHeader: { textAlign: 'center', marginBottom: '64px', maxWidth: '600px', margin: '0 auto 64px auto' },
   sectionLabel: { color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.15em', fontSize: '0.875rem', fontWeight: '800' },
-  sectionTitle: { fontSize: '2.5rem', fontWeight: '800', color: '#121212', marginBottom: '16px', marginTop: '8px', lineHeight: 1.2 },
+  sectionTitle: { fontSize: '2.5rem', fontWeight: '800', color: 'var(--text-dark)', marginBottom: '16px', marginTop: '8px', lineHeight: 1.2 },
   sectionDesc: { color: '#666', fontSize: '1.1rem' },
 
   menuGrid: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px', marginBottom: '48px' },
@@ -327,9 +336,10 @@ const styles = {
 
   comboSection: { padding: '0', position: 'relative', overflow: 'hidden', minHeight: '550px', display: 'flex', alignItems: 'center' },
   comboVideo: { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 },
-  comboOverlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(230,57,70,0.4) 100%)', zIndex: 1 },
+  comboOverlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(242,89,13,0.4) 100%)', zIndex: 1 },
   comboContent: { position: 'relative', zIndex: 2, padding: '100px 24px' },
-  comboTitle: { fontSize: '4rem', marginBottom: '16px', color: 'white' }
+  comboTitle: { fontSize: '4rem', marginBottom: '16px', color: 'white' },
+
 };
 
 export default Home;

@@ -135,7 +135,7 @@ const styles = {
   logoText: {
     fontSize: '1.2rem',
     fontWeight: '800',
-    color: '#121212',
+    color: 'var(--text-dark)',
     letterSpacing: '-0.02em',
   },
   nav: { display: 'flex' },
@@ -148,13 +148,14 @@ const styles = {
   },
   navLink: {
     textDecoration: 'none',
-    fontSize: '0.95rem',
+    fontSize: '1rem',
+    fontFamily: "'Six Hands Black', cursive",
     padding: '4px 0',
   },
   ctaBtn: {
     textDecoration: 'none',
-    padding: '10px 20px',
-    fontSize: '0.9rem',
+    padding: '12px 24px',
+    fontSize: '0.95rem',
   },
   mobileMenuBtn: {
     background: 'none',
@@ -170,7 +171,7 @@ const styles = {
     borderTop: '1px solid #eaedf2',
   },
   mobileLink: {
-    fontSize: '1.1rem',
+    fontSize: '1.5rem',
     fontWeight: '600',
     padding: '12px 0',
     borderBottom: '1px solid #eaedf2',
