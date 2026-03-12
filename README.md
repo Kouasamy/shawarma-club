@@ -1,16 +1,45 @@
-# React + Vite
+# 🌯 Le Shawarma Club | Le Meilleur Shawarma d'Abidjan
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Une expérience culinaire authentique et moderne pour les amateurs de shawarmas à Abidjan.
 
-Currently, two official plugins are available:
+## 🌟 Présentation
+**Le Shawarma Club** est bien plus qu'un simple fast-food. C'est l'alliance entre la tradition libanaise et la modernité d'Abidjan. Notre application web permet aux clients de découvrir nos produits d'exception — pain libanais frais, viandes marinées avec soin et sauce signature — et de commander instantanément.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Fonctionnalités Clés
+- **Design "Light & Fresh"** : Une interface moderne, épurée et très visuelle qui met en avant nos produits.
+- **Menu Complet** : Navigation fluide entre les différentes catégories (Shawarmas, Formules, Boissons).
+- **Intégration WhatsApp** : Système de commande direct par redirection WhatsApp pour une rapidité maximale.
+- **Animations de pointe** : Utilisation de **GSAP** pour des transitions douces et des effets de révélation au scroll.
+- **Optimisation SEO** : Référencement naturel (méta-tags, Open Graph, Sitemap, Robots.txt) pour une visibilité optimale sur Google.
+- **Performance** : Développé avec **Vite** pour un chargement ultra-rapide.
 
-## React Compiler
+## 🛠️ Stack Technique
+- **Core** : [React 19](https://react.dev/) + [Vite 7](https://vite.dev/)
+- **Styling** : Vanilla CSS (Design System sur mesure)
+- **Animations** : [GSAP](https://gsap.com/)
+- **Icons** : [Lucide React](https://lucide.dev/)
+- **Routage** : React Router 7
+- **SEO** : React Helmet Async
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📖 Développement
 
-## Expanding the ESLint configuration
+### Prérequis
+- Node.js (v18+)
+- npm ou yarn
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Installation
+1. Cloner le dépôt
+2. Installer les dépendances :
+   ```bash
+   npm install
+   ```
+3. Lancer le serveur de développement :
+   ```bash
+   npm run dev
+   ```
+
+## 📍 localisation
+Le Shawarma Club est basé à **Cocody, Abidjan (Côte d'Ivoire)**. Nous livrons sur Cocody, Riviera, Marcory, Plateau et Yopougon.
+
+---
+*© 2026 Le Shawarma Club. Conçu pour offrir le meilleur shawarma d'Abidjan.*
