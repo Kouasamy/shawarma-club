@@ -55,7 +55,7 @@ const Navbar = () => {
           </ul>
         </nav>
 
-        <a href="https://wa.me/message/UFUEWJAI4FTED1" target="_blank" rel="noopener noreferrer" className="btn btn-primary glow-btn desktop-cta" style={styles.ctaBtn}>
+        <a href="https://wa.me/2250719264924" target="_blank" rel="noopener noreferrer" className="btn btn-primary glow-btn desktop-cta" style={styles.ctaBtn}>
           <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp" style={{width: 20, height: 20}} />
           Commander
         </a>
@@ -87,7 +87,7 @@ const Navbar = () => {
             </Link>
           ))}
           <a 
-            href="https://wa.me/message/UFUEWJAI4FTED1" 
+            href="https://wa.me/2250719264924" 
             className="btn btn-primary glow-btn" 
             style={{marginTop: 32, width: '100%', padding: '20px', fontSize: '1.2rem'}}
           >

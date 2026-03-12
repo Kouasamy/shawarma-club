@@ -29,7 +29,7 @@ const Menu = () => {
 
   const handleDirectOrder = (product) => {
     const msg = `Bonjour Le Shawarma Club ! 🌯\n\nJe souhaite commander depuis le site :\n👉 *1x ${product.name}*\n\n💰 *Prix : ${product.price} F CFA*\n\nMerci de confirmer ma commande ! ✨`;
-    window.open(`https://wa.me/message/UFUEWJAI4FTED1?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(`https://wa.me/2250719264924?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
   const filteredItems = activeTab === "Tous" 

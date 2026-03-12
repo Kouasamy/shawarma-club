@@ -52,7 +52,7 @@ const WhatsAppCard = () => {
         </ol>
       </div>
       <div style={styles.optionFooter}>
-        <a href="https://wa.me/message/UFUEWJAI4FTED1" target="_blank" rel="noopener noreferrer" className="btn btn-primary glow-btn" style={{width: '100%', display: 'flex', justifyContent: 'center', gap: '10px'}}>
+        <a href="https://wa.me/2250719264924" target="_blank" rel="noopener noreferrer" className="btn btn-primary glow-btn" style={{width: '100%', display: 'flex', justifyContent: 'center', gap: '10px'}}>
           <ShoppingCart size={20} /> Commander au prix Club
         </a>
       </div>
@@ -166,7 +166,7 @@ const ContactSection = () => {
             />
           </div>
           <div style={{marginTop: '40px', marginBottom: '24px', textAlign: 'center'}}>
-             <a href="https://wa.me/message/UFUEWJAI4FTED1" target="_blank" rel="noopener noreferrer" className="btn glow-btn" style={{padding: '16px 32px', backgroundColor: '#25D366', color: 'white', fontWeight: '700'}}>
+             <a href="https://wa.me/2250719264924" target="_blank" rel="noopener noreferrer" className="btn glow-btn" style={{padding: '16px 32px', backgroundColor: '#25D366', color: 'white', fontWeight: '700'}}>
                Discuter sur WhatsApp
              </a>
           </div>
@@ -177,7 +177,7 @@ const ContactSection = () => {
           <h3 style={{fontSize: '1.4rem', marginBottom: '32px'}}>Infos du Club</h3>
           {[
             { icon: <MapPin size={24} color="var(--primary)" />, title: 'Adresse', text: 'Cocody, Rue A24, Villa 4, Abidjan' },
-            { icon: <Phone size={24} color="var(--primary)" />, title: 'WhatsApp', text: 'Contactez-nous', link: 'https://wa.me/message/UFUEWJAI4FTED1' },
+            { icon: <Phone size={24} color="var(--primary)" />, title: 'WhatsApp', text: 'Contactez-nous', link: 'https://wa.me/2250719264924' },
             { icon: <Mail size={24} color="var(--primary)" />, title: 'Email', text: 'le.shawarmaclub@gmail.com' },
             { icon: <Clock size={24} color="var(--primary)" />, title: 'Horaires', text: 'Lun - Sam: 11h - 22h\nDim: 12h - 21h' },
           ].map((item, i) => (

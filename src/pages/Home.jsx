@@ -8,7 +8,7 @@ import SEO from '../components/SEO';
 const Home = () => {
   const handleDirectOrder = (product) => {
     const msg = `Bonjour Le Shawarma Club ! 🌯\n\nJe souhaite commander depuis le site :\n👉 *1x ${product.name}*\n\n💰 *Prix : ${product.price} F CFA*\n\nMerci de confirmer ma commande ! ✨`;
-    window.open(`https://wa.me/message/UFUEWJAI4FTED1?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(`https://wa.me/2250719264924?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const Home = () => {
               Au Shawarma Club, dégustez un shawarma généreux avec du pain libanais frais, des viandes marinées et notre sauce secrète. Livré directement à votre porte à Abidjan. 🌯✨
             </p>
             <div style={styles.heroBtns}>
-              <a href="https://wa.me/message/UFUEWJAI4FTED1" target="_blank" rel="noopener noreferrer" className="btn btn-primary glow-btn" style={{padding: '16px 32px', fontSize: '1.1rem', flex: '1 1 auto', textAlign: 'center'}}>
+              <a href="https://wa.me/2250719264924" target="_blank" rel="noopener noreferrer" className="btn btn-primary glow-btn" style={{padding: '16px 32px', fontSize: '1.1rem', flex: '1 1 auto', textAlign: 'center'}}>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp" style={{width: 22, height: 22}} />
                 WhatsApp
               </a>
@@ -135,7 +135,7 @@ const Home = () => {
 
       {/* ═══════════════ FLOATING CONTACT ═══════════════ */}
       <a 
-        href="https://wa.me/message/UFUEWJAI4FTED1" 
+        href="https://wa.me/2250719264924" 
         target="_blank" 
         rel="noopener noreferrer"
         className="floating-whatsapp-mobile glow-btn"

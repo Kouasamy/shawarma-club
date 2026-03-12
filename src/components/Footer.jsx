@@ -43,7 +43,7 @@ const Footer = () => {
           <ul style={styles.contactList}>
             <li style={styles.contactItem}>
                <Phone size={18} color="var(--primary)"/> 
-               <a href="https://wa.me/message/UFUEWJAI4FTED1" style={{color: '#666666'}}>WhatsApp</a>
+               <a href="https://wa.me/2250719264924" style={{color: '#666666'}}>WhatsApp</a>
             </li>
             <li style={styles.contactItem}>
                <Mail size={18} color="var(--primary)"/> 
